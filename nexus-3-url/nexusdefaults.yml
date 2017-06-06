@@ -1,0 +1,6 @@
+groupid: companyname
+artifactid: softwarename
+extension: tar.gz
+version: 1.0.0 
+classifier: release
+repositoryurl: 'https://your-nexus-server.company.com/repository/maven-releases'
