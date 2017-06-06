@@ -2,9 +2,9 @@
 
 Nexus 2 has a [nifty REST API](http://www.sonatype.org/nexus/2015/08/13/using-the-rest-api-in-nexus-2/) that you can use to, among other things, get the latest version of a given maven artifact.
 
-However, after wondering why it didn't work on my Nexus 3 server, it seems [the REST API isn't there yet for Nexus 3](https://groups.google.com/a/glists.sonatype.com/forum/#!topic/nexus-users/_CxNZVFSWAs) (which wasn't documented as well as I'd like it to be).
+However, after wondering why it didn't work on my Nexus 3 server, it seems [the REST API isn't built yet for Nexus 3](https://groups.google.com/a/glists.sonatype.com/d/msg/nexus-users/_CxNZVFSWAs/H3MmEqTGCgAJ) (which wasn't documented as well as I'd like it to be).
 
-From reading the notes of other people encountering the issue and other scripts people generated (and me being a control freak), I decided to write my own URL generator for maven artifacts.
+From reading the notes of other people encountering the issue and other scripts people generated (and me being a control freak and someone looking to practice Python), I decided to write my own URL generator for maven artifacts.
 
 ## How to use
 
