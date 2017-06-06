@@ -25,6 +25,16 @@ If these values are not specified, the script will use the value specified in ne
 
 The script assumes connectivity to the repository. Unless `latest` or `release` is specified, it will generate the complete URL but with some error text. If `latest` or `release` is specified, the script will error out in checking the maven-metadata.
 
+## Examples
+
+`./getnexusurl.py -v latest`
+
+Grabs the URL for the last uploaded artifact, using the defaults set in nexusdefaults.py.
+
+`curl -O (./getnexusurl.py -v 1.2.3-release -a Artifact.Sample -g SampleOrg)`
+
+Grabs the URL with the specified parameters then downloads it in the local directory.
+
 ## Other info
 
 Script tested on ubuntu and WSL w/ Python 2. Go ahead and use this script if you'd like. If you have any questions, email me at ted (dot) glomski (at) gmail (dot) com.
