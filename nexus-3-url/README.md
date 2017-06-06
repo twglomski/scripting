@@ -10,6 +10,7 @@ From reading the notes of other people encountering the issue and other scripts 
 
 The script takes six parameters (unix style format):
 
++ `--defaultsfile (-f, -d)`
 + `--groupid (-g)`
 + `--artifactid (-a)`
 + `--extension (-e)`
@@ -17,13 +18,13 @@ The script takes six parameters (unix style format):
 + `--classifier (-c)`
 + `--repositoryurl (-r)`
 
+`defaultsfile` is the path to the defaults file, in case you are running the script in a different directory. If any values are not specified, the script will use the value specified in nexusdefaults.yml.
+
 `repositoryurl` is the base url for the maven repository (e.g. `https://nexus.yourorg.com/repository/maven-releases`). If you browse to the artifact you wish to programmatically grab, the other five values can be pulled from the artifact info.
 
 `version` can either be the actual version you'd like to download. It can also accept `latest` and `release`, which grabs the artifacts Nexus labels as the latest and the release (which may not be the artifact you want - numerous discussions elsewhere about this topic).
 
-If these values are not specified, the script will use the value specified in nexusdefaults.yml.
-
-The script assumes connectivity to the repository. Unless `latest` or `release` is specified, it will generate the complete URL but with some error text. If `latest` or `release` is specified, the script will error out in checking the maven-metadata.
+The script assumes connectivity to the repository. If you run the script on a server without HTTP/S access to Nexus, unless `latest` or `release` is specified, it will generate the complete URL but with some error text. If `latest` or `release` is specified in this case, the script will error out in checking the maven-metadata.
 
 ## Examples
 

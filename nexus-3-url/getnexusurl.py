@@ -5,16 +5,26 @@ import xml.etree.ElementTree as ET
 import yaml
 import sys
 import getopt
+import os
 
 def parseopts(argv):
-  with open("nexusdefaults.yml", "r") as stream:
-    output = yaml.load(stream)
-  helptext = 'valid parameters:\n --groupid (-g)\n --artifactid (-a)\n --extension (-e)\n --version (-v)\n --classifier (-c)\n --repositoryurl (-r)'
+  helptext = 'valid parameters:\n --defaultsfile (-d, -f)\n --groupid (-g)\n --artifactid (-a)\n --extension (-e)\n --version (-v)\n --classifier (-c)\n --repositoryurl (-r)'
   try:
-    opts, args = getopt.getopt(argv,"hg:a:e:v:c:r:",["groupid=","artifactid=","extension=","version=","classifier=","repositoryurl="])
+    opts, args = getopt.getopt(argv,"hg:a:e:v:c:r:d:f:",["defaultsfile","groupid=","artifactid=","extension=","version=","classifier=","repositoryurl="])
   except getopt.GetoptError:
     print helptext
     sys.exit(2)
+  nexus_defaults_path = os.getcwd() + '/nexusdefaults.yml'
+  for opt, arg in opts:
+    if opt in ("--defaultsfile", "-d", "-f"):
+      nexus_defaults_path = arg
+  try:
+    os.stat(nexus_defaults_path)
+  except OSError:
+    print ("file not found at " + nexus_defaults_path)
+    sys.exit(2)
+  with open(nexus_defaults_path, "r") as stream:
+    output = yaml.load(stream)
   for opt, arg in opts:
     if opt == '-h':
       print helptext
